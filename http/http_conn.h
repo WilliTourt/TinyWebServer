@@ -68,6 +68,15 @@ public:
         LINE_OPEN
     };
 
+    enum class Pages : char {
+        WELCOME,
+        LOGIN,
+        REGISTER,
+        MAIN,
+        USER_INFO,
+        USER_LIST,
+    };
+
 public:
     http_conn() {}
     ~http_conn() {}

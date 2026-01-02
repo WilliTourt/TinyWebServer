@@ -395,7 +395,7 @@ http_conn::HTTP_CODE http_conn::do_request()
     //处理cgi
     if (cgi == 1 && (*(p + 1) == '2' || *(p + 1) == '3'))
     {
-
+        
         //根据标志判断是登录检测还是注册检测
         char flag = m_url[1];
 
