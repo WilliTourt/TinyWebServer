@@ -1,0 +1,229 @@
+
+=================================================================
+==16198==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 152 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b37340 in calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:77
+    #1 0x7fc4a5449930  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e930) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a53ff2b9 in mysql_store_result (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x442b9) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x5611f7ee1c20 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:92
+    #4 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #5 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #6 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #7 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #8 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Direct leak of 36 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x5611f7ef1560 in WebServer::WebServer() /home/willitourt/TinyWebServer/webserver.cpp:12
+    #2 0x5611f7edf628 in main /home/willitourt/TinyWebServer/main.cpp:14
+    #3 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #4 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #5 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 8240 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449b07  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8eb07) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a53f48d9  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x398d9) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53ff313 in mysql_store_result (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x44313) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x5611f7ee1c20 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:92
+    #7 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #8 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #9 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #10 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #11 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 304 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a53f580f  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a80f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #9 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #10 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #11 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #12 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #13 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 120 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f51d8  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a1d8) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 120 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f51a9  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a1a9) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b37340 in calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:77
+    #1 0x7fc4a5449930  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e930) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a53f4676  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x39676) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a53ff313 in mysql_store_result (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x44313) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x5611f7ee1c20 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:92
+    #5 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #6 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #7 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #8 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #9 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f514b  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a14b) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b37340 in calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:77
+    #1 0x7fc4a5449930  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e930) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a53ff2d6 in mysql_store_result (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x442d6) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x5611f7ee1c20 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:92
+    #4 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #5 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #6 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #7 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #8 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a53f583f  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a83f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #9 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #10 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #11 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #12 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #13 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f518e  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a18e) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f5166  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a166) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 112 byte(s) in 2 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a5449bb4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ebb4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f5129  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a129) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53f57ce  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a7ce) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #9 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #10 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #11 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #12 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #13 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #14 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #15 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 104 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b379c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7fc4a5449977  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e977) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a5449a22  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ea22) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a5449ad4  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8ead4) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x7fc4a53f5827  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a827) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #5 0x7fc4a53f597d  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x3a97d) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #6 0x7fc4a53fc981  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x41981) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #7 0x7fc4a53ff03f in mysql_real_query (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x4403f) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #8 0x5611f7ee1b28 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:86
+    #9 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #10 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #11 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #12 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #13 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7fc4a5b37340 in calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:77
+    #1 0x7fc4a5449930  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x8e930) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #2 0x7fc4a53f4658  (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x39658) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #3 0x7fc4a53ff313 in mysql_store_result (/lib/x86_64-linux-gnu/libmysqlclient.so.21+0x44313) (BuildId: 8dd3c2bd57868b6b9a9270972028742c10684853)
+    #4 0x5611f7ee1c20 in http_conn::initmysql_result(connection_pool*) http/http_conn.cpp:92
+    #5 0x5611f7ef250b in WebServer::sql_pool() /home/willitourt/TinyWebServer/webserver.cpp:93
+    #6 0x5611f7edf9b2 in main /home/willitourt/TinyWebServer/main.cpp:26
+    #7 0x7fc4a4e3c1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #8 0x7fc4a4e3c28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 274eec488d230825a136fa9c4d85370fed7a0a5e)
+    #9 0x5611f7edf244 in _start (/home/willitourt/TinyWebServer/server+0x8244) (BuildId: e3056972f488274398afe23bc636f502638ebc0e)
+
+SUMMARY: AddressSanitizer: 9924 byte(s) leaked in 21 allocation(s).

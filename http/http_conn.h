@@ -10,7 +10,7 @@
 #include <arpa/inet.h>
 #include <assert.h>
 #include <sys/stat.h>
-#include <string.h>
+#include <string>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -68,13 +68,20 @@ public:
         LINE_OPEN
     };
 
-    enum class Pages : char {
-        WELCOME,
-        LOGIN,
-        REGISTER,
-        MAIN,
-        USER_INFO,
-        USER_LIST,
+    enum class RouteType {
+        UNKNOWN,           // 404
+
+        REGISTER_AND_LOGIN,
+        WELCOME_PAGE,
+        PICTURE_PAGE,      // Temporary
+        VIDEO_PAGE,        // Temporary
+        FILE_MANAGER_PAGE, // Temporary
+
+        // Action
+        LOGIN_ACTION,
+        REGISTER_ACTION,
+
+        STATIC_FILE        // (.html, .jpg, etc..)
     };
 
 public:
@@ -92,6 +99,9 @@ public:
         return &m_address;
     }
     void initmysql_result(connection_pool *connPool);
+
+    RouteType parseRoute(const std::string& url, bool isPost) const;
+
     int timer_flag;
     int improv;
 
@@ -115,6 +125,8 @@ private:
     bool add_content_length(int content_length);
     bool add_linger();
     bool add_blank_line();
+
+    bool handleRoute(RouteType route);
 
 public:
     static int m_epollfd;
@@ -143,7 +155,7 @@ private:
     struct stat m_file_stat;
     struct iovec m_iv[2];
     int m_iv_count;
-    int cgi;        //是否启用的POST
+    // int cgi;        //是否启用的POST
     char *m_string; //存储请求头数据
     int bytes_to_send;
     int bytes_have_send;
