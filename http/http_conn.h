@@ -72,7 +72,7 @@ public:
         UNKNOWN,           // 404
 
         REGISTER_AND_LOGIN,
-        WELCOME_PAGE,
+        HOME,
         PICTURE_PAGE,      // Temporary
         VIDEO_PAGE,        // Temporary
         FILE_MANAGER_PAGE, // Temporary

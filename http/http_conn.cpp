@@ -33,8 +33,8 @@ http_conn::RouteType http_conn::parseRoute(const std::string& url, bool isPost) 
     if (url == "/" || url == "/home" || url == "/RegisterAndLogin.html") {
         return RouteType::REGISTER_AND_LOGIN;
     }
-    if (url == "/welcome" || url == "/welcome.html") {
-        return RouteType::WELCOME_PAGE;
+    if (url == "/home" || url == "/home.html") {
+        return RouteType::HOME;
     }
     if (url == "/picture" || url == "/picture.html") {
         return RouteType::PICTURE_PAGE;
@@ -498,7 +498,7 @@ http_conn::HTTP_CODE http_conn::process_read()
 //         else if (*(p + 1) == '2')
 //         {
 //             if (users.find(name) != users.end() && users[name] == password)
-//                 strcpy(m_url, "/welcome.html");
+//                 strcpy(m_url, "/home.html");
 //             else
 //                 strcpy(m_url, "/logError.html");
 //         }
@@ -621,8 +621,8 @@ http_conn::HTTP_CODE http_conn::do_request() {
         } else if (route == RouteType::LOGIN_ACTION) {
             if (users.find(name) != users.end() && users[name] == password) {
                 // 登录成功
-                strcpy(m_url, "/welcome");
-                strcpy(m_real_file + len, "/welcome.html");
+                strcpy(m_url, "/home");
+                strcpy(m_real_file + len, "/home.html");
             } else {
                 // 登录失败
 
@@ -634,8 +634,8 @@ http_conn::HTTP_CODE http_conn::do_request() {
                 strcpy(m_real_file + len, "/RegisterAndLogin.html");
                 break;
                 
-            case RouteType::WELCOME_PAGE:
-                strcpy(m_real_file + len, "/welcome.html");
+            case RouteType::HOME:
+                strcpy(m_real_file + len, "/home.html");
                 break;
                 
             case RouteType::PICTURE_PAGE:
